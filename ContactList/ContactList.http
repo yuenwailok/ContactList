@@ -1,0 +1,69 @@
+@ContactList_HostAddress = https://localhost:7142
+
+GET {{ContactList_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{ContactList_HostAddress}}/api/contact
+
+###
+
+@id=4013
+GET {{ContactList_HostAddress}}/api/contacts/{{id}}
+
+###
+
+POST {{ContactList_HostAddress}}/api/contacts
+Content-Type: application/json
+{
+  "FirstName":"Siu Ming",
+  "LastName":"Chan",
+  "phoneNumber":"9115",
+  "email":"kng1344@gmail.com",
+  "address":null,
+  "notes":null
+}
+
+###
+
+PUT {{ContactList_HostAddress}}/api/contacts?id={{id}}
+Content-Type: application/json
+
+{
+  "contactID": 4014,
+  "firstName": "Siu Fong",
+  "lastName": "Wong",
+  "phoneNumber": "9115",
+  "email": "kng1344@gmail.com",
+  "address": null,
+  "notes": null
+}
+
+###
+
+GET {{ContactList_HostAddress}}/api/contacts/{{id}}
+
+###
+
+PUT {{ContactList_HostAddress}}/api/contacts/{{id}}
+Content-Type: application/json
+
+{
+  //Contact
+}
+
+###
+
+@id=4002
+DELETE {{ContactList_HostAddress}}/api/contacts/{{id}}
+
+###
+
+GET {{ContactList_HostAddress}}/api/contacts
+
+###
+
+GET {{ContactList_HostAddress}}/weatherforecast
+
+###
