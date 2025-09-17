@@ -6,6 +6,8 @@ USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
+USER root
+RUN apt-get update && apt-get install -y curl
 
 
 # This stage is used to build the service project
