@@ -16,7 +16,6 @@ namespace ContactList.Repositories
         private SqlConnection GetConnection()
         {
             var cs = _configuration.GetConnectionString("DefaultConnection");
-            System.Diagnostics.Debug.WriteLine(cs);
             return new SqlConnection(cs);
         }
 

@@ -33,7 +33,7 @@ namespace ContactList.Controllers
             {
                 return NotFound("This contact does not exist");
             }
-            return contact;
+            return Ok(contact);
         }
 
         [HttpPost]
