@@ -40,10 +40,9 @@ namespace ContactListTest
             mock.Setup(r => r.GetAllAsync()).Returns(Task.FromResult<List<Contact>>(contacts));
             var controller = new ContactsController(mock.Object);
             var allcontacts = await controller.GetAll();
-            var result3 = (OkObjectResult)allcontacts.Result;
-            var result4 = result3.Value;
+            var result = ((OkObjectResult)allcontacts.Result).Value;
             mock.Verify(r => r.GetAllAsync());
-            Assert.That(contacts, Is.EqualTo(result4));
+            Assert.That(contacts, Is.EqualTo(result));
         }
 
         [Test]
@@ -64,10 +63,9 @@ namespace ContactListTest
             mock.Setup(r => r.GetByIdAsync(fakeId)).Returns(Task.FromResult<Contact>(contact));
             var controller = new ContactsController(mock.Object);
             var controller_contact = await controller.GetById(fakeId);
-            var result3 = (OkObjectResult)controller_contact.Result;
-            var result4 = result3.Value;
+            var result = ((OkObjectResult)controller_contact.Result).Value;
             mock.Verify(r => r.GetByIdAsync(fakeId));
-            Assert.That(contact, Is.EqualTo(result4));
+            Assert.That(contact, Is.EqualTo(result));
         }
 
 
