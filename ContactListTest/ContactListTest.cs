@@ -48,20 +48,24 @@ namespace ContactListTest
         [Test]
         public async Task AddControllerTest()
         {
-            int fakeId = 1;
             var contact = new Contact
             {
-                ContactID = fakeId,
-                Address = "Dest Street " + fakeId,
-                Email = "Destest@gmail.com",
-                PhoneNumber = "444444" + fakeId,
-                FirstName = "Dest",
-                LastName = "Dest",
+                ContactID = 1,
+                Address = "Test Street " + 1,
+                Email = "testest@gmail.com",
+                PhoneNumber = "444444" + 1,
+                FirstName = "Test",
+                LastName = "Test",
                 Notes = "Hello World"
             };
+            int fakeId = 1;
             var mock = new Mock<IContactRepository>();
-            Assert.Pass();
-
+            var controller = new ContactsController(mock.Object);
+            var addcontacts = await controller.AddAsync(contact);
+            mock.Verify(r => r.AddAsync(contact));
+            var result = ((CreatedAtActionResult)addcontacts);
+            int status_code = 201;
+            Assert.That(result.StatusCode, Is.EqualTo(status_code));
         }
 
         [Test]
@@ -101,6 +105,8 @@ namespace ContactListTest
             mock.Verify(r => r.GetByIdAsync(fakeId));
             Assert.That(contact, Is.EqualTo(result));
         }
+
+
 
 
     }
