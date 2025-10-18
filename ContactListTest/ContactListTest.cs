@@ -46,6 +46,39 @@ namespace ContactListTest
         }
 
         [Test]
+        public async Task AddControllerTest()
+        {
+            int fakeId = 1;
+            var contact = new Contact
+            {
+                ContactID = fakeId,
+                Address = "Dest Street " + fakeId,
+                Email = "Destest@gmail.com",
+                PhoneNumber = "444444" + fakeId,
+                FirstName = "Dest",
+                LastName = "Dest",
+                Notes = "Hello World"
+            };
+            var mock = new Mock<IContactRepository>();
+            Assert.Pass();
+
+        }
+
+        [Test]
+        public async Task GetByIdControllerTestNull()
+        {
+            int fakeId = 99;
+            var mock = new Mock<IContactRepository>();
+            var controller = new ContactsController(mock.Object);
+            var controller_contact = await controller.GetById(fakeId);
+            var result = ((NotFoundObjectResult)controller_contact.Result);
+            var result_value = result.Value;
+            mock.Verify(r => r.GetByIdAsync(fakeId));
+            int status_code = 404;
+            Assert.That(result.StatusCode, Is.EqualTo(status_code));
+        }
+
+        [Test]
         public async Task GetByIdControllerTest()
         {
             int fakeId = 1;
@@ -61,6 +94,7 @@ namespace ContactListTest
             };
             var mock = new Mock<IContactRepository>();
             mock.Setup(r => r.GetByIdAsync(fakeId)).Returns(Task.FromResult<Contact>(contact));
+
             var controller = new ContactsController(mock.Object);
             var controller_contact = await controller.GetById(fakeId);
             var result = ((OkObjectResult)controller_contact.Result).Value;
