@@ -1,0 +1,15 @@
+services:
+  webapp:
+    image: ${DOCKER_REGISTRY-}contactlist
+    ports:
+      - 8001:8001
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=coolpass1234!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_HTTPS_PORTS=8001
+    volumes:
+      - ~/.aspnet/https:/https:ro
+    build:
+      context: .
+      dockerfile: ContactList/Dockerfile
