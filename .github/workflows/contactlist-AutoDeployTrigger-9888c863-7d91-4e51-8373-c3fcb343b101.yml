@@ -28,7 +28,7 @@ jobs:
         run: echo "Github Workspace is ${{ github.workspace }}"
 
       - name: list all github.workspace files
-        run: ls ${{ github.workspace }}"
+        run: ls ${{ github.workspace }}
 
       
       - name: Azure Login
@@ -53,6 +53,7 @@ jobs:
           imageToBuild: yuenwailok/contactlist:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
+
 
 
 
