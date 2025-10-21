@@ -55,8 +55,8 @@ namespace ContactList.Controllers
         )]
         public async Task<ActionResult> AddAsync(Contact contact)
         {
-            var ownerIdOfTodo = IsAppMakingRequest() ? new Guid() : GetUserId();
-            contact.Notes = contact.Notes + ownerIdOfTodo.ToString();
+            //var ownerIdOfTodo = IsAppMakingRequest() ? new Guid() : GetUserId();
+            //contact.Notes = contact.Notes + ownerIdOfTodo.ToString();
             await _contactRepository.AddAsync(contact);
             return CreatedAtAction(nameof(GetById), new {id = contact.ContactID}, contact);
         }
