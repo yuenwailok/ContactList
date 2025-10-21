@@ -38,12 +38,13 @@ jobs:
           _dockerfilePathKey_: _dockerfilePath_
           _targetLabelKey_: _targetLabel_
           registryUrl: docker.io
-          registryUsername: ${{ secrets.CONTACTLIST_REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.CONTACTLIST_REGISTRY_PASSWORD }}
+          registryUsername: ${{ secrets.DOCKER_USERNAME }}
+          registryPassword: ${{ secrets.DOCKER_PASSWORD }}
           containerAppName: contactlist
           resourceGroup: contactlist
           imageToBuild: yuenwailok/contactlist:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
+
 
 
