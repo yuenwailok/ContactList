@@ -24,6 +24,10 @@ jobs:
       - name: Checkout to the branch
         uses: actions/checkout@v2
 
+      - name: Echo github.workspace
+        run: echo "Github Workspace is ${{ github.workspace }}"
+
+      
       - name: Azure Login
         uses: azure/login@v2
         with:
@@ -46,6 +50,7 @@ jobs:
           imageToBuild: yuenwailok/contactlist:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
+
 
 
 
