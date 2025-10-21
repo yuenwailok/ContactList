@@ -36,7 +36,7 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}
           _dockerfilePathKey_: _dockerfilePath_
-          dockerfilePath: _dockerfilePath_
+          dockerfilePath: Dockerfile
           _targetLabelKey_: _targetLabel_
           registryUrl: docker.io
           registryUsername: ${{ secrets.DOCKER_USERNAME }}
@@ -46,6 +46,7 @@ jobs:
           imageToBuild: yuenwailok/contactlist:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
+
 
 
 
